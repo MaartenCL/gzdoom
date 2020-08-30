@@ -561,17 +561,22 @@ class StatusScreen abstract play version("2.5")
 		if (t < 0)
 			return;
 
-		int hours = t / 3600;
-		t -= hours * 3600;
-		int minutes = t / 60;
-		t -= minutes * 60;
-		int seconds = t;
+		int hours = t / 360000;
+		t -= hours * 360000;
+		int minutes = t / 6000;
+		t -= minutes * 6000;
+		int seconds = t / 100;
+		t -= seconds * 100;
+		int digits = t;
 
 		// Why were these offsets hard coded? Half the WADs with custom patches
 		// I tested screwed up miserably in this function!
 		int num_spacing = printFont.GetCharWidth("3");
 		int colon_spacing = printFont.GetCharWidth(":");
+		int dot_spacing = printFont.GetCharWidth(".");
 
+		x = drawNum (printFont, x, y, digits, 2, true, color) - 1;
+		DrawCharPatch (printFont, ".", x -= dot_spacing, y, color);
 		x = drawNum (printFont, x, y, seconds, 2, true, color) - 1;
 		DrawCharPatch (printFont, ":", x -= colon_spacing, y, color);
 		x = drawNum (printFont, x, y, minutes, 2, hours!=0, color);

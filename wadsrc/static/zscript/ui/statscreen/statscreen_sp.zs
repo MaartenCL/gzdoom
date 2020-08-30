@@ -27,9 +27,9 @@ class DoomStatusScreen : StatusScreen
 			cnt_kills[0] = Plrs[me].skills;
 			cnt_items[0] = Plrs[me].sitems;
 			cnt_secret[0] = Plrs[me].ssecret;
-			cnt_time = Thinker.Tics2Seconds(Plrs[me].stime);
+			cnt_time = Thinker.Tics2Centiseconds(Plrs[me].stime);
 			cnt_par = wbs.partime / Thinker.TICRATE;
-			cnt_total_time = Thinker.Tics2Seconds(wbs.totaltime);
+			cnt_total_time = Thinker.Tics2Centiseconds(wbs.totaltime);
 		}
 
 		if (sp_state == 2)
@@ -87,16 +87,16 @@ class DoomStatusScreen : StatusScreen
 				if (!(bcnt&3))
 					PlaySound("intermission/tick");
 
-				cnt_time += 3;
-				cnt_par += 3;
+				cnt_time += 300;
+				cnt_par += 300;
 				cnt_total_time += 3;
 			}
 
-			int sec = Thinker.Tics2Seconds(Plrs[me].stime);
+			int sec = Thinker.Tics2Centiseconds(Plrs[me].stime);
 			if (!intermissioncounter || cnt_time >= sec)
 				cnt_time = sec;
 
-			int tsec = Thinker.Tics2Seconds(wbs.totaltime);
+			int tsec = Thinker.Tics2Centiseconds(wbs.totaltime);
 			if (!intermissioncounter || cnt_total_time >= tsec)
 				cnt_total_time = tsec;
 
@@ -218,6 +218,44 @@ class DoomStatusScreen : StatusScreen
 		{
 			drawTimeFont (printFont, 320 - SP_TIMEX, SP_TIMEY, cnt_par, tcolor);
 		}
+	}
+
+	String preciseTime (int tics)
+	{
+		int time = 100 * tics / Thinker.TICRATE;
+		int hours = time / 360000;
+		time -= hours * 360000;
+		int minutes = time / 6000;
+		time -= minutes * 6000;
+		int seconds = time / 100;
+		time -= seconds * 100;
+		int digits = time;
+
+		String s = "";
+		if (hours > 0)
+		{
+			s = String.Format("%d", hours) .. ":";
+		}
+
+		if (hours > 0 || minutes < 10)
+		{
+			s = s .. "0";
+		}
+		s = s .. String.Format("%d", minutes) .. ":";
+
+		if (seconds < 10)
+		{
+			s = s .. "0";
+		}
+		s = s .. String.Format("%d", seconds) .. ".";
+
+		if (digits < 10)
+		{
+			s = s .. "0";
+		}
+		s = s .. String.Format("%d", digits);
+
+		return s;
 	}
 }
 

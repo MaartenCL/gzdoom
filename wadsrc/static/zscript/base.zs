@@ -530,6 +530,10 @@ class Thinker : Object native play
 		return int(tics / TICRATE);
 	}
 
+	static clearscope int Tics2Centiseconds(int tics)
+	{
+		return int(tics * 100 / TICRATE);
+	}
 }
 
 class ThinkerIterator : Object native
