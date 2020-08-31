@@ -479,7 +479,7 @@ class StatusScreen abstract play version("2.5")
 
 	void drawNumScaled (Font fnt, int x, int y, double scale, int n, int digits, int translation = Font.CR_UNTRANSLATED)
 	{
-		String s = String.Format("%d", n);
+		String s = String.Format("%i", n);
 		drawTextScaled(fnt, x - fnt.StringWidth(s) * scale, y, s, scale, translation);
 	}
 
@@ -520,13 +520,15 @@ class StatusScreen abstract play version("2.5")
 		if (t < 0)
 			return;
 
-		int hours = t / 3600;
-		t -= hours * 3600;
-		int minutes = t / 60;
-		t -= minutes * 60;
-		int seconds = t;
+		int hours = t / 360000;
+		t -= hours * 360000;
+		int minutes = t / 6000;
+		t -= minutes * 6000;
+		int seconds = t / 100;
+		t -= seconds * 100;
+		int digits = t;
 
-		String s = (hours > 0 ? String.Format("%d:", hours) : "") .. String.Format("%02d:%02d", minutes, seconds);
+		String s = (hours > 0 ? String.Format("%d:", hours) : "") .. String.Format("%02d:%02d.%02d", minutes, seconds, digits);
 
 		drawTextScaled(fnt, x - fnt.StringWidth(s) * scale, y, s, scale, color);
 	}

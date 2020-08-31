@@ -73,8 +73,8 @@ class CoopStatusScreen : StatusScreen
 			}
 			cnt_otherkills = otherkills;
 
-			cnt_time = Thinker.Tics2Seconds(Plrs[me].stime);
-			cnt_total_time = Thinker.Tics2Seconds(wbs.totaltime);
+			cnt_time = Thinker.Tics2Centiseconds(Plrs[me].stime);
+			cnt_total_time = Thinker.Tics2Centiseconds(wbs.totaltime);
 
 			PlaySound("intermission/nextstage");
 			ng_state = 12;
@@ -170,14 +170,14 @@ class CoopStatusScreen : StatusScreen
 
 			stillticking = false;
 
-			cnt_time += 3;
-			cnt_total_time += 3;
+			cnt_time += 300;
+			cnt_total_time += 300;
 
-			int sec = Thinker.Tics2Seconds(Plrs[me].stime);
+			int sec = Thinker.Tics2Centiseconds(Plrs[me].stime);
 			if (cnt_time > sec)
 			{
 				cnt_time = sec;
-				cnt_total_time = Thinker.Tics2Seconds(wbs.totaltime);
+				cnt_total_time = Thinker.Tics2Centiseconds(wbs.totaltime);
 			}
 			else
 				stillticking = true;

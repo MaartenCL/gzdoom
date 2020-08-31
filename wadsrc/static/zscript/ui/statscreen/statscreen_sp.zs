@@ -89,7 +89,7 @@ class DoomStatusScreen : StatusScreen
 
 				cnt_time += 300;
 				cnt_par += 300;
-				cnt_total_time += 3;
+				cnt_total_time += 300;
 			}
 
 			int sec = Thinker.Tics2Centiseconds(Plrs[me].stime);
@@ -218,44 +218,6 @@ class DoomStatusScreen : StatusScreen
 		{
 			drawTimeFont (printFont, 320 - SP_TIMEX, SP_TIMEY, cnt_par, tcolor);
 		}
-	}
-
-	String preciseTime (int tics)
-	{
-		int time = 100 * tics / Thinker.TICRATE;
-		int hours = time / 360000;
-		time -= hours * 360000;
-		int minutes = time / 6000;
-		time -= minutes * 6000;
-		int seconds = time / 100;
-		time -= seconds * 100;
-		int digits = time;
-
-		String s = "";
-		if (hours > 0)
-		{
-			s = String.Format("%d", hours) .. ":";
-		}
-
-		if (hours > 0 || minutes < 10)
-		{
-			s = s .. "0";
-		}
-		s = s .. String.Format("%d", minutes) .. ":";
-
-		if (seconds < 10)
-		{
-			s = s .. "0";
-		}
-		s = s .. String.Format("%d", seconds) .. ".";
-
-		if (digits < 10)
-		{
-			s = s .. "0";
-		}
-		s = s .. String.Format("%d", digits);
-
-		return s;
 	}
 }
 
