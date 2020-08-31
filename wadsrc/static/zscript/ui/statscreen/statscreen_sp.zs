@@ -189,12 +189,12 @@ class DoomStatusScreen : StatusScreen
 		drawPercent (printFont, 320 - statsx, SP_STATSY, cnt_kills[0], wbs.maxkills, true, tcolor);
 		drawPercent (printFont, 320 - statsx, SP_STATSY+lh, cnt_items[0], wbs.maxitems, true, tcolor);
 		drawPercent (printFont, 320 - statsx, SP_STATSY+2*lh, cnt_secret[0], wbs.maxsecret, true, tcolor);
-		drawTimeFont (printFont, 160 - SP_TIMEX, SP_TIMEY, cnt_time, tcolor);
+		drawTimeFont (printFont, 160 - SP_TIMEX, SP_TIMEY, cnt_time, tcolor, true);
 			 
 		// This really sucks - not just by its message - and should have been removed long ago!
 		// To avoid problems here, the "sucks" text only gets printed if the lump is present, this even applies to the text replacement.
 			 
-		if (cnt_time >= wbs.sucktime * 60 * 60 && wbs.sucktime > 0 && Sucks.IsValid())
+		if (cnt_time >= wbs.sucktime * 360000 && wbs.sucktime > 0 && Sucks.IsValid())
 		{ // "sucks"
 			int x = 160 - SP_TIMEX;
 			int y = SP_TIMEY;
@@ -211,7 +211,7 @@ class DoomStatusScreen : StatusScreen
 
 		if (wi_showtotaltime)
 		{
-			 drawTimeFont (printFont, 160 - SP_TIMEX, SP_TIMEY + lh, cnt_total_time, tcolor);
+			 drawTimeFont (printFont, 160 - SP_TIMEX, SP_TIMEY + lh, cnt_total_time, tcolor, true);
 		}
 
 		if (wbs.partime)
