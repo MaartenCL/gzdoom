@@ -12,4 +12,4 @@ Doom Source (c) 1997 id Software, Raven Software, and contributors
 _I have created a version more suitable for speedrunning that displays times that include hundredths of seconds.
 In co-op mode, kills, items, and secrets are in absolute numbers instead of percentages._
 
-_There is only a beta version now, which can be downloaded [here](https://github.com/MaartenCL/gzdoom/releases/download/v4.4.3-beta/gzdoom-speedrun.zip). The files in this zip file should be copied over the latest release of GZDoom._
+_There is only a beta version now, which can be downloaded [here](https://github.com/MaartenCL/gzdoom/releases/download/v4.4.3-beta/gzdoom-speedrun.zip). The files should be copied over the latest release of GZDoom._
