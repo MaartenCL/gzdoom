@@ -320,15 +320,15 @@ class CoopStatusScreen : StatusScreen
 				screen.DrawTexture(player.mo.ScoreIcon, true, icon_x, y, DTA_CleanNoMove, true);
 			}
 			drawTextScaled(displayFont, name_x, y + ypadding, player.GetUserName(), FontScale, thiscolor);
-			drawPercentScaled(displayFont, kills_x, y + ypadding, cnt_kills[i], wbs.maxkills, FontScale, thiscolor);
+			drawPercentScaled(displayFont, kills_x, y + ypadding, cnt_kills[i], wbs.maxkills, FontScale, false, thiscolor);
 			missed_kills -= cnt_kills[i];
 			if (ng_state >= 4)
 			{
-				drawPercentScaled(displayFont, bonus_x, y + ypadding, cnt_items[i], wbs.maxitems, FontScale, thiscolor);
+				drawPercentScaled(displayFont, bonus_x, y + ypadding, cnt_items[i], wbs.maxitems, FontScale, false, thiscolor);
 				missed_items -= cnt_items[i];
 				if (ng_state >= 6)
 				{
-					drawPercentScaled(displayFont, secret_x, y + ypadding, cnt_secret[i], wbs.maxsecret, FontScale, thiscolor);
+					drawPercentScaled(displayFont, secret_x, y + ypadding, cnt_secret[i], wbs.maxsecret, FontScale, false, thiscolor);
 					missed_secrets -= cnt_secret[i];
 				}
 			}
@@ -338,19 +338,19 @@ class CoopStatusScreen : StatusScreen
 		// Draw "OTHER" line
 		y += 3 * CleanYfac;
 		drawTextScaled(displayFont, name_x, y, Stringtable.Localize("$SCORE_OTHER"), FontScale, Font.CR_DARKGRAY);
-		drawPercentScaled(displayFont, kills_x, y, cnt_otherkills, wbs.maxkills, FontScale, Font.CR_DARKGRAY);
+		drawPercentScaled(displayFont, kills_x, y, cnt_otherkills, wbs.maxkills, FontScale, false, Font.CR_DARKGRAY);
 		missed_kills -= cnt_otherkills;
 
 		// Draw "MISSED" line
 		y += height + 3 * CleanYfac;
 		drawTextScaled(displayFont, name_x, y, Stringtable.Localize("$SCORE_MISSED"), FontScale, Font.CR_DARKGRAY);
-		drawPercentScaled(displayFont, kills_x, y, missed_kills, wbs.maxkills, FontScale, Font.CR_DARKGRAY);
+		drawPercentScaled(displayFont, kills_x, y, missed_kills, wbs.maxkills, FontScale, false, Font.CR_DARKGRAY);
 		if (ng_state >= 4)
 		{
-			drawPercentScaled(displayFont, bonus_x, y, missed_items, wbs.maxitems, FontScale, Font.CR_DARKGRAY);
+			drawPercentScaled(displayFont, bonus_x, y, missed_items, wbs.maxitems, FontScale, false, Font.CR_DARKGRAY);
 			if (ng_state >= 6)
 			{
-				drawPercentScaled(displayFont, secret_x, y, missed_secrets, wbs.maxsecret, FontScale, Font.CR_DARKGRAY);
+				drawPercentScaled(displayFont, secret_x, y, missed_secrets, wbs.maxsecret, FontScale, false, Font.CR_DARKGRAY);
 			}
 		}
 
