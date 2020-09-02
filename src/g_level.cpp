@@ -1428,6 +1428,7 @@ void FLevelLocals::StartTravel ()
 			if (Players[i]->health > 0)
 			{
 				pawn->UnlinkFromWorld (nullptr);
+				pawn->BlockingLine = nullptr;
 				int tid = pawn->tid;	// Save TID
 				pawn->SetTID(0);
 				pawn->tid = tid;		// Restore TID (but no longer linked into the hash chain)
@@ -1562,6 +1563,12 @@ int FLevelLocals::FinishTravel ()
 		if (ib_compatflags & BCOMPATF_RESETPLAYERSPEED)
 		{
 			pawn->Speed = pawn->GetDefault()->Speed;
+		}
+
+		IFVIRTUALPTRNAME(pawn, NAME_PlayerPawn, Travelled)
+		{
+			VMValue params[1] = { pawn };
+			VMCall(func, params, 1, nullptr, 0);
 		}
 		// [ZZ] we probably don't want to fire any scripts before all players are in, especially with runNow = true.
 		pawns[pawnsnum++] = pawn;
