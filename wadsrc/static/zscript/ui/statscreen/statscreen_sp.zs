@@ -28,7 +28,7 @@ class DoomStatusScreen : StatusScreen
 			cnt_items[0] = Plrs[me].sitems;
 			cnt_secret[0] = Plrs[me].ssecret;
 			cnt_time = Thinker.Tics2Centiseconds(Plrs[me].stime);
-			cnt_par = wbs.partime / Thinker.TICRATE;
+			cnt_par = 100 * wbs.partime / Thinker.TICRATE;
 			cnt_total_time = Thinker.Tics2Centiseconds(wbs.totaltime);
 		}
 
@@ -100,10 +100,10 @@ class DoomStatusScreen : StatusScreen
 			if (!intermissioncounter || cnt_total_time >= tsec)
 				cnt_total_time = tsec;
 
-			int psec = wbs.partime / Thinker.TICRATE;
-			if (!intermissioncounter || cnt_par >= psec)
+			int ptime = 100 * wbs.partime / Thinker.TICRATE;
+			if (!intermissioncounter || cnt_par >= ptime)
 			{
-				cnt_par = psec;
+				cnt_par = ptime;
 
 				if (cnt_time >= sec)
 				{
