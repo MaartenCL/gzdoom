@@ -3334,6 +3334,7 @@ Hub,OPTVAL_HUB,,,,Hub,Hub,,Rekontejo,Hub,,Tasokokoelma,Hub,,Hub,区間,허브,Na
 Total,OPTVAL_TOTAL,,,,Celkem,Gesamt,,Tuto,,,Yhteensä,Total,,Totale,合計,누적 경과,Totaal,Totalne,,,Total,Общее,Тотал
 "System, seconds",OPTVAL_SYSTEMSECONDS,,,,"Systém, vteřiny","System, Sekunden",,"Sistemo, sekundoj","Sistema, segundos",,"Järjestelmä, sekunnit","Système, secondes",,"Sistema, secondi","PC時刻, 秒","시스템, 초당","Systeem, seconden","System, sekundy","Sistema, segundos",,"Sistem, secunde",Система (секунды),"Систем, секунде"
 System,OPTVAL_SYSTEM,,,,Systém,System,,Sistemo,Sistema,,Järjestelmä,Système,,Sistema,PC時刻,시스템,Systeem,System,Sistema,,Sistem,Система,Систем
+"Level, total, milliseconds",OPTVAL_ALLTIMES,,,,,"Level, Gesamt, Millisekunden",,,,,"Taso, yhteensä, millisekunnit",,,,,,"Level, totaal, milliseconden",,,,,,
 Netgames only,OPTVAL_NETGAMESONLY,,,,Pouze v síťové hře,Nur Netzwerkspiele,,Retludoj sole,Sólo para juegos en red,,Vain verkkopelit,Parties en Ligne seulement,,Solo giochi net,オンラインのみ,멀티플레이에만,Alleen Netspellen,Tylko gry sieciowe,Jogos em rede apenas,,Doar în rețea,Только сетевые игры,Мрежне игре само
 Always,OPTVAL_ALWAYS,,,,Vždy,Immer,,Ĉiam,Siempre,,Aina,Toujours,,Sempre,常に,언제나,Altijd,Zawsze,Sempre,,Mereu,Всегда,Увек
 Image and Text,OPTVAL_AMMOIMAGETEXT,,,,Obrázek a text,Bild und Text,,Bildo kaj Teksto,Imagen y texto,,Kuva ja teksti,Image et Texte,,Immagini e testo,画像と字,이미지와 텍스트,Beeld en tekst,Obraz i Tekst,Imagem e texto,,Imagine si Text,Изображение и текст,Слика и текст

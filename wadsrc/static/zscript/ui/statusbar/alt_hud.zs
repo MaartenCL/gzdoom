@@ -774,19 +774,19 @@ class AltHud ui
 	// for meaning of all display modes
 	//
 	//---------------------------------------------------------------------------
-	virtual bool DrawTime(int y)
+	virtual int DrawTime(int y)
 	{
-		if (hud_showtime > 0 && hud_showtime <= 9)
+		if (hud_showtime > 0 && hud_showtime <= 10)
 		{
 			int timeSeconds;
 			String timeString;
 
-			if (hud_showtime < 8)
+			if (hud_showtime < 9)
 			{
 				int timeTicks =
-					hud_showtime < 4
+					hud_showtime < 5
 						? Level.maptime
-						: (hud_showtime < 6
+						: (hud_showtime < 7
 							? Level.time
 							: Level.totaltime);
 				timeSeconds = Thinker.Tics2Seconds(timeTicks);
@@ -795,8 +795,8 @@ class AltHud ui
 				int minutes = (timeSeconds % 3600) / 60;
 				int seconds =  timeSeconds % 60;
 
-				bool showMillis  = 1 == hud_showtime;
-				bool showSeconds = showMillis || (0 == hud_showtime % 2);
+				bool showMillis  = hud_showtime < 3;
+				bool showSeconds = showMillis || (hud_showtime % 2 == 1);
 
 				if (showMillis)
 				{
@@ -812,11 +812,11 @@ class AltHud ui
 					timeString = String.Format("%02i:%02i", hours, minutes);
 				}
 			}
-			else if (hud_showtime == 8)
+			else if (hud_showtime == 9)
 			{
 				timeString = SystemTime.Format("%H:%M:%S",SystemTime.Now());
 			}
-			else //if (hud_showtime == 9)
+			else //if (hud_showtime == 10)
 			{
 				timeString = SystemTime.Format("%H:%M",SystemTime.Now());
 			}
@@ -824,9 +824,24 @@ class AltHud ui
 			int characterCount = timeString.length();
 			int width  = SmallFont.GetCharWidth("0") * characterCount + 2; // small offset from screen's border
 			DrawHudText(SmallFont, hud_timecolor, timeString, hudwidth - width, y, 1);
-			return true;
+			if (hud_showtime == 1)
+			{
+				int timeTicks = Level.totaltime;
+				timeSeconds = Thinker.Tics2Seconds(timeTicks);
+				int hours = timeSeconds / 3600;
+				int minutes = (timeSeconds % 3600) / 60;
+				int seconds = timeSeconds % 60;
+				int millis = (Level.totaltime % Thinker.TICRATE) * (1000 / Thinker.TICRATE);
+				timeString = String.Format("%02i:%02i:%02i.%03i", hours, minutes, seconds, millis);
+				y += SmallFont.GetHeight();
+				DrawHudText(SmallFont, hud_timecolor, timeString, hudwidth - width, y, 1);
+				return 2;
+			}
+
+			return 1;
 		}
-		return false;
+
+		return 0;
 	}
 
 	//---------------------------------------------------------------------------
@@ -922,7 +937,7 @@ class AltHud ui
 
 		int h = SmallFont.GetHeight();
 		y = h;
-		if (DrawTime(y)) y += h;
+		y += DrawTime(y) * h;
 		if (DrawLatency(y)) y += h;
 		DrawPowerups(CPlayer, y - h + POWERUPICONSIZE * 5 / 4);
 	}
