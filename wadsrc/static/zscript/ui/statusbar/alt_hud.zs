@@ -831,7 +831,6 @@ class AltHud ui
 				int hours = timeSeconds / 3600;
 				int minutes = (timeSeconds % 3600) / 60;
 				int seconds = timeSeconds % 60;
-				int millis = (Level.totaltime % Thinker.TICRATE) * (1000 / Thinker.TICRATE);
 				timeString = String.Format("%02i:%02i:%02i.%03i", hours, minutes, seconds, millis);
 				y += SmallFont.GetHeight();
 				DrawHudText(SmallFont, hud_timecolor, timeString, hudwidth - width, y, 1);
