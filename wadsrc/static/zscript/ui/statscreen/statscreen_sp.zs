@@ -216,7 +216,7 @@ class DoomStatusScreen : StatusScreen
 
 		if (wbs.partime)
 		{
-			drawTimeFont (printFont, 320 - SP_TIMEX, SP_TIMEY, cnt_par, tcolor);
+			drawTimeFont (printFont, 320 - SP_TIMEX, SP_TIMEY, cnt_par, tcolor, true);
 		}
 	}
 }

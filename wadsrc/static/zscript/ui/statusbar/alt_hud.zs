@@ -795,10 +795,14 @@ class AltHud ui
 				int minutes = (timeSeconds % 3600) / 60;
 				int seconds =  timeSeconds % 60;
 
-				bool showMillis  = hud_showtime < 3;
-				bool showSeconds = showMillis || (hud_showtime % 2 == 1);
+				bool showSeconds = hud_showtime < 3 || (hud_showtime % 2 == 1);
 
-				if (showMillis)
+				if (hud_showtime == 1)
+				{
+					int cents = (Level.time % Thinker.TICRATE) * (100 / Thinker.TICRATE);
+					timeString = String.Format("%02i:%02i:%02i.%02i", hours, minutes, seconds, cents);
+				}
+				if (hud_showtime == 2)
 				{
 					int millis  = (Level.time % Thinker.TICRATE) * (1000 / Thinker.TICRATE);
 					timeString = String.Format("%02i:%02i:%02i.%03i", hours, minutes, seconds, millis);
@@ -831,7 +835,8 @@ class AltHud ui
 				int hours = timeSeconds / 3600;
 				int minutes = (timeSeconds % 3600) / 60;
 				int seconds = timeSeconds % 60;
-				timeString = String.Format("%02i:%02i:%02i.%03i", hours, minutes, seconds, millis);
+				int cents = (Level.totaltime % Thinker.TICRATE) * (100 / Thinker.TICRATE);
+				timeString = String.Format("%02i:%02i:%02i.%02i", hours, minutes, seconds, cents);
 				y += SmallFont.GetHeight();
 				DrawHudText(SmallFont, hud_timecolor, timeString, hudwidth - width, y, 1);
 				return 2;
