@@ -1632,7 +1632,7 @@ void FLevelLocals::Init()
 	P_ClearParticles(this);
 	BaseBlendA = 0.0f;		// Remove underwater blend effect, if any
 
-	gravity = sv_gravity * 35/TICRATE;
+	gravity = sv_gravity * 15/TICRATE;
 	aircontrol = sv_aircontrol;
 	AirControlChanged();
 	teamdamage = ::teamdamage;
@@ -1665,7 +1665,7 @@ void FLevelLocals::Init()
 	WallHorizLight = info->WallHorizLight*2;
 	if (info->gravity != 0.f)
 	{
-		gravity = info->gravity * 35/TICRATE;
+		gravity = info->gravity * 15/TICRATE;
 	}
 	if (info->aircontrol != 0.f)
 	{

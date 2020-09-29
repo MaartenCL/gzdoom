@@ -64,7 +64,7 @@ enum
 	MAXPLAYERS = 8,
 
 	// State updates, number of tics / second.
-	TICRATE = 35,
+	TICRATE = 15,
 
 	// Amount of damage done by a telefrag.
 	TELEFRAG_DAMAGE = 1000000
