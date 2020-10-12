@@ -34,7 +34,7 @@ class PowerupGiver : Inventory
 
 		if (EffectTics != 0)
 		{
-			power.EffectTics = EffectTics;
+			power.EffectTics = EffectTics * 35 / 15;
 		}
 		if (BlendColor != 0)
 		{
@@ -120,7 +120,7 @@ class Powerup : Inventory
 			// Increase the effect's duration.
 			if (power.bAdditiveTime) 
 			{
-				EffectTics += power.EffectTics;
+				EffectTics += power.EffectTics * 35 / 15;
 				BlendColor = power.BlendColor;
 			}
 			// If it's not blinking yet, you can't replenish the power unless the
@@ -132,7 +132,7 @@ class Powerup : Inventory
 			// Reset the effect duration.
 			else if (power.EffectTics > EffectTics)
 			{
-				EffectTics = power.EffectTics;
+				EffectTics = power.EffectTics * 35 / 15;
 				BlendColor = power.BlendColor;
 			}
 			power.bPickupGood = true;

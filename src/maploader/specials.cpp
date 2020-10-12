@@ -513,7 +513,7 @@ void MapLoader::InitSectorSpecial(sector_t *sector, int special)
 		break;
 
 	case dSector_DoorCloseIn30:
-		Level->CreateThinker<DDoor>(sector, DDoor::doorWaitClose, 2, 0, 0, (7./3.) * 30 * TICRATE);
+		Level->CreateThinker<DDoor>(sector, DDoor::doorWaitClose, 2, 0, 0, 70 * TICRATE);
 		break;
 			
 	case dDamage_End:
@@ -521,7 +521,7 @@ void MapLoader::InitSectorSpecial(sector_t *sector, int special)
 		break;
 
 	case dSector_DoorRaiseIn5Mins:
-		Level->CreateThinker<DDoor> (sector, DDoor::doorWaitRaise, 2, TICRATE*30/7, 0, (7./3.) * 5*60*TICRATE);
+		Level->CreateThinker<DDoor> (sector, DDoor::doorWaitRaise, 2, TICRATE * 30 / 7, 0, 700 * TICRATE);
 		break;
 
 	case dFriction_Low:
